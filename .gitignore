@@ -132,3 +132,6 @@ db/data/*
 
 ### AXON ###
 axon-server-se/*/*
+
+### Private files ###
+.env
