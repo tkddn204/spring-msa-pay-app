@@ -38,8 +38,8 @@ class RegisterMembershipControllerTest extends SpringBootIntegrationTest {
                 .andExpect(jsonPath("$.name").value(expected.getName()))
                 .andExpect(jsonPath("$.email").value(expected.getEmail()))
                 .andExpect(jsonPath("$.address").value(expected.getAddress()))
-                .andExpect(jsonPath("$.valid").value(expected.isValid()))
-                .andExpect(jsonPath("$.corp").value(expected.isCorp()));
+                .andExpect(jsonPath("$.valid").value(expected.getIsValid()))
+                .andExpect(jsonPath("$.corp").value(expected.getIsCorp()));
     }
 
 }

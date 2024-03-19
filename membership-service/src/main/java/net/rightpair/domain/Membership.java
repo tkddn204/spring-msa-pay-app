@@ -1,6 +1,9 @@
 package net.rightpair.domain;
 
-import lombok.*;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 
 /**
  * 오염이 되어서는 안되는 고객 정보(핵심 도메인)
@@ -12,8 +15,10 @@ public class Membership {
     private final String name;
     private final String email;
     private final String address;
-    private final boolean isValid;
-    private final boolean isCorp;
+    @JsonProperty("valid")
+    private final Boolean isValid;
+    @JsonProperty("corp")
+    private final Boolean isCorp;
 
     public static Membership generate(
             MembershipId membershipId,
@@ -38,6 +43,6 @@ public class Membership {
     public record MembershipName(String membershipName) { }
     public record MembershipEmail(String membershipEmail) { }
     public record MembershipAddress(String membershipAddress) { }
-    public record MembershipIsValid(boolean membershipIsValid) { }
-    public record MembershipIsCorp(boolean membershipIsCorp) { }
+    public record MembershipIsValid(Boolean membershipIsValid) { }
+    public record MembershipIsCorp(Boolean membershipIsCorp) { }
 }
