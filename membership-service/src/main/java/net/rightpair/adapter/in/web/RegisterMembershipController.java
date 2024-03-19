@@ -1,9 +1,9 @@
 package net.rightpair.adapter.in.web;
 
 import lombok.RequiredArgsConstructor;
-import net.rightpair.application.port.in.RegisterMembershipCommand;
-import net.rightpair.application.port.in.RegisterMembershipEndPoint;
-import net.rightpair.application.port.in.RegisterMembershipUseCase;
+import net.rightpair.application.port.in.command.RegisterMembershipCommand;
+import net.rightpair.application.port.in.endpoint.RegisterMembershipEndPoint;
+import net.rightpair.application.port.in.usecase.RegisterMembershipUseCase;
 import net.rightpair.common.WebAdapter;
 import net.rightpair.domain.Membership;
 import org.springframework.http.ResponseEntity;

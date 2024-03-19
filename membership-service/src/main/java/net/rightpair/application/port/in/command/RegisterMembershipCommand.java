@@ -1,4 +1,4 @@
-package net.rightpair.application.port.in;
+package net.rightpair.application.port.in.command;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.Builder;

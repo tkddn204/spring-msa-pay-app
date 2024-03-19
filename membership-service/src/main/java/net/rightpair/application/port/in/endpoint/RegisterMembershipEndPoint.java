@@ -1,4 +1,4 @@
-package net.rightpair.application.port.in;
+package net.rightpair.application.port.in.endpoint;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
