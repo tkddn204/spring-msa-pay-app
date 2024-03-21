@@ -1,4 +1,4 @@
-package net.rightpair.membership.application.exception;
+package net.rightpair.exception;
 
 public class MembershipNotFoundException extends RuntimeException {
     public MembershipNotFoundException() {

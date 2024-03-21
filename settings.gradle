@@ -2,4 +2,5 @@ rootProject.name = 'spring-pay-app'
 include 'membership-service'
 include 'common'
 include 'banking-service'
+include 'money-service'
 
