@@ -5,7 +5,7 @@ import net.rightpair.banking.application.port.in.command.RegisterBankAccountComm
 import net.rightpair.banking.adapter.in.web.endpoint.RegisterBankAccountEndPoint;
 import net.rightpair.banking.application.port.in.usecase.RegisterBankAccountUseCase;
 import net.rightpair.banking.domain.RegisteredBankAccount;
-import net.rightpair.common.WebAdapter;
+import net.rightpair.common.annotation.WebAdapter;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

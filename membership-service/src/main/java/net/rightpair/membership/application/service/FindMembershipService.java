@@ -6,7 +6,7 @@ import net.rightpair.membership.adapter.out.persistence.MembershipMapper;
 import net.rightpair.membership.application.port.in.command.FindMembershipCommand;
 import net.rightpair.membership.application.port.in.usecase.FindMembershipUseCase;
 import net.rightpair.membership.application.port.out.FindMembershipPort;
-import net.rightpair.common.UseCase;
+import net.rightpair.common.annotation.UseCase;
 import net.rightpair.membership.domain.Membership;
 import org.springframework.transaction.annotation.Transactional;
 

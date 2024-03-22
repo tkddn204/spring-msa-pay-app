@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import net.rightpair.membership.application.port.in.command.RegisterMembershipCommand;
 import net.rightpair.membership.adapter.in.web.endpoint.RegisterMembershipEndPoint;
 import net.rightpair.membership.application.port.in.usecase.RegisterMembershipUseCase;
-import net.rightpair.common.WebAdapter;
+import net.rightpair.common.annotation.WebAdapter;
 import net.rightpair.membership.domain.Membership;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

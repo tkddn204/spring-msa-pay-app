@@ -4,7 +4,9 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/banking-service/spring-pay-app.banking-service.main.iml" filepath="$PROJECT_DIR$/.idea/modules/banking-service/spring-pay-app.banking-service.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/common/spring-pay-app.common.main.iml" filepath="$PROJECT_DIR$/.idea/modules/common/spring-pay-app.common.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/logging-consumer/spring-pay-app.logging-consumer.main.iml" filepath="$PROJECT_DIR$/.idea/modules/logging-consumer/spring-pay-app.logging-consumer.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/membership-service/spring-pay-app.membership-service.main.iml" filepath="$PROJECT_DIR$/.idea/modules/membership-service/spring-pay-app.membership-service.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/money-service/spring-pay-app.money-service.main.iml" filepath="$PROJECT_DIR$/.idea/modules/money-service/spring-pay-app.money-service.main.iml" />
     </modules>
   </component>
 </project>

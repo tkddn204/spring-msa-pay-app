@@ -5,8 +5,8 @@ import net.rightpair.common.annotation.WebAdapter;
 import net.rightpair.money.adapter.in.web.endpoint.RequestMoneyChangingEndpoint;
 import net.rightpair.money.application.port.in.command.DecreaseMoneyRequestCommand;
 import net.rightpair.money.application.port.in.command.IncreaseMoneyRequestCommand;
+import net.rightpair.money.application.port.in.usecase.AsyncIncreaseMoneyRequestUseCase;
 import net.rightpair.money.application.port.in.usecase.DecreaseMoneyRequestUseCase;
-import net.rightpair.money.application.port.in.usecase.IncreaseMoneyRequestUseCase;
 import net.rightpair.money.domain.MoneyChangingRequest;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,18 +21,18 @@ import static net.rightpair.money.domain.MoneyChangingRequest.ChangingType.INCRE
 @RestController
 @RequestMapping("/money")
 @RequiredArgsConstructor
-public class RequestMoneyChangingController implements RequestMoneyChangingEndpoint {
-    private final IncreaseMoneyRequestUseCase increaseMoneyRequestUseCase;
+public class AsyncRequestMoneyChangingController implements RequestMoneyChangingEndpoint {
+    private final AsyncIncreaseMoneyRequestUseCase increaseMoneyRequestUseCase;
     private final DecreaseMoneyRequestUseCase decreaseMoneyRequestUsecase;
 
     @Override
-    @PostMapping("/increase")
+    @PostMapping("/increase/async")
     public MoneyChangingResultDetail increaseMoneyChangingRequest(@RequestBody IncreaseMoneyChangingRequest request) {
         IncreaseMoneyRequestCommand command = IncreaseMoneyRequestCommand.builder()
                 .targetMembershipId(request.targetMemberShipId())
                 .amount(request.amount())
                 .build();
-        MoneyChangingRequest moneyChangingRequest = increaseMoneyRequestUseCase.increaseMoneyRequest(command);
+        MoneyChangingRequest moneyChangingRequest = increaseMoneyRequestUseCase.asyncIncreaseMoneyRequest(command);
         return MoneyChangingResultDetail.generate(
                 moneyChangingRequest.moneyChangingRequestId(),
                 INCREASING.ordinal(),
@@ -44,6 +44,7 @@ public class RequestMoneyChangingController implements RequestMoneyChangingEndpo
     @Override
     @PostMapping("/decrease")
     public MoneyChangingResultDetail decreaseMoneyChangingRequest(@RequestBody DecreaseMoneyChangingRequest request) {
+        // async 미구현
         DecreaseMoneyRequestCommand command = DecreaseMoneyRequestCommand.builder()
                 .targetMembershipId(request.targetMembershipId())
                 .amount(request.amount())
