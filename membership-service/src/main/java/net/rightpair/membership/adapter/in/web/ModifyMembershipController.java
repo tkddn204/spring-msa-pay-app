@@ -2,7 +2,7 @@ package net.rightpair.membership.adapter.in.web;
 
 import lombok.RequiredArgsConstructor;
 import net.rightpair.membership.application.port.in.command.ModifyMembershipCommand;
-import net.rightpair.membership.application.port.in.endpoint.ModifyMembershipEndPoint;
+import net.rightpair.membership.adapter.in.web.endpoint.ModifyMembershipEndPoint;
 import net.rightpair.membership.application.port.in.usecase.ModifyMembershipUseCase;
 import net.rightpair.common.WebAdapter;
 import net.rightpair.membership.domain.Membership;

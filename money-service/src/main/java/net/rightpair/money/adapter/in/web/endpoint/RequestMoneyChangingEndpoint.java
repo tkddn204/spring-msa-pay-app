@@ -1,4 +1,4 @@
-package net.rightpair.money.application.port.in.endpoint;
+package net.rightpair.money.adapter.in.web.endpoint;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;

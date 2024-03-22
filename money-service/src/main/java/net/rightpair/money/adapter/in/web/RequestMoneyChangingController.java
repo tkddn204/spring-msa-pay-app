@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import net.rightpair.common.WebAdapter;
 import net.rightpair.money.application.port.in.command.DecreaseMoneyRequestCommand;
 import net.rightpair.money.application.port.in.command.IncreaseMoneyRequestCommand;
-import net.rightpair.money.application.port.in.endpoint.RequestMoneyChangingEndpoint;
+import net.rightpair.money.adapter.in.web.endpoint.RequestMoneyChangingEndpoint;
 import net.rightpair.money.application.port.in.usecase.DecreaseMoneyRequestUseCase;
 import net.rightpair.money.application.port.in.usecase.IncreaseMoneyRequestUseCase;
 import net.rightpair.money.domain.MoneyChangingRequest;

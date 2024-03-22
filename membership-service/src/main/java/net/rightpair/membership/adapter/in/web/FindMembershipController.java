@@ -2,7 +2,7 @@ package net.rightpair.membership.adapter.in.web;
 
 import lombok.RequiredArgsConstructor;
 import net.rightpair.membership.application.port.in.command.FindMembershipCommand;
-import net.rightpair.membership.application.port.in.endpoint.FindMembershipEndPoint;
+import net.rightpair.membership.adapter.in.web.endpoint.FindMembershipEndPoint;
 import net.rightpair.membership.application.port.in.usecase.FindMembershipUseCase;
 import net.rightpair.membership.domain.Membership;
 import org.springframework.http.ResponseEntity;

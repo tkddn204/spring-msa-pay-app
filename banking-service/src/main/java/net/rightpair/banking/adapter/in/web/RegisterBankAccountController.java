@@ -2,7 +2,7 @@ package net.rightpair.banking.adapter.in.web;
 
 import lombok.RequiredArgsConstructor;
 import net.rightpair.banking.application.port.in.command.RegisterBankAccountCommand;
-import net.rightpair.banking.application.port.in.endpoint.RegisterBankAccountEndPoint;
+import net.rightpair.banking.adapter.in.web.endpoint.RegisterBankAccountEndPoint;
 import net.rightpair.banking.application.port.in.usecase.RegisterBankAccountUseCase;
 import net.rightpair.banking.domain.RegisteredBankAccount;
 import net.rightpair.common.WebAdapter;
