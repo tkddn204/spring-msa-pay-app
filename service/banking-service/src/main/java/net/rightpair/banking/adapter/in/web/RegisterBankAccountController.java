@@ -33,4 +33,6 @@ public class RegisterBankAccountController implements RegisterBankAccountEndPoin
                 .build();
         return ResponseEntity.ok(registerBankAccountUseCase.registerBankAccount(command));
     }
+
+
 }
