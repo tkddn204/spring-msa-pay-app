@@ -1,9 +1,7 @@
 HELP.md
 .gradle
-/*/build/
+build/
 !gradle/wrapper/gradle-wrapper.jar
-!**/src/main/**/build/
-!**/src/test/**/build/
 
 ### STS ###
 .apt_generated
@@ -55,9 +53,6 @@ cmake-build-*/
 
 # File-based project format
 *.iws
-
-# IntelliJ
-out/
 
 # mpeltonen/sbt-idea plugin
 .idea_modules/

@@ -6,7 +6,7 @@ import net.rightpair.money.adapter.in.web.DecreaseMoneyChangingRequest;
 import net.rightpair.money.adapter.in.web.IncreaseMoneyChangingRequest;
 import net.rightpair.money.adapter.in.web.MoneyChangingResultDetail;
 
-@Tag(name = "입출금")
+@Tag(name = "머니")
 public interface RequestMoneyChangingEndpoint {
 
     @Operation(

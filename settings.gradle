@@ -3,5 +3,7 @@ include 'common'
 include 'service:membership-service'
 include 'service:banking-service'
 include 'service:money-service'
+include 'service:remittance-service'
 include 'consumer:logging-consumer'
 include 'consumer:task-consumer'
+

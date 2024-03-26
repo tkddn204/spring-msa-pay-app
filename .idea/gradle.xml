@@ -17,6 +17,7 @@
             <option value="$PROJECT_DIR$/service/banking-service" />
             <option value="$PROJECT_DIR$/service/membership-service" />
             <option value="$PROJECT_DIR$/service/money-service" />
+            <option value="$PROJECT_DIR$/service/remittance-service" />
           </set>
         </option>
       </GradleProjectSettings>

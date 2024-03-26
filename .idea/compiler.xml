@@ -14,6 +14,7 @@
         <module name="spring-pay-app.service.membership-service.main" />
         <module name="spring-pay-app.consumer.task-consumer.main" />
         <module name="spring-pay-app.service.banking-service.main" />
+        <module name="spring-pay-app.service.remittance-service.main" />
         <module name="spring-pay-app.service.main" />
         <module name="spring-pay-app.consumer.logging-consumer.main" />
       </profile>

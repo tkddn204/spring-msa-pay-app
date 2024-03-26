@@ -1,3 +1,7 @@
 spring:
   application:
     name: banking-service
+
+service:
+  membership:
+    url: http://localhost:8081

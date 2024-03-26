@@ -6,7 +6,7 @@ import net.rightpair.banking.adapter.in.web.RequestFirmBankingRequest;
 import net.rightpair.banking.domain.FirmBankingRequest;
 import org.springframework.http.ResponseEntity;
 
-@Tag(name = "펌뱅킹")
+@Tag(name = "뱅킹")
 public interface RequestFirmBankingEndPoint {
     @Operation(
             method = "POST",
