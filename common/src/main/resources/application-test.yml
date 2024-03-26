@@ -7,3 +7,8 @@ spring:
   jpa:
     hibernate:
       ddl-auto: create
+
+# kafka
+kafka:
+  bootstrap:
+    addresses: ${spring.embedded.kafka.brokers:localhost:9092}

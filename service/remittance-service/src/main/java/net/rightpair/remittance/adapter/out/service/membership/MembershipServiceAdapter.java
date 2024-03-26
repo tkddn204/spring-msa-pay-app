@@ -1,15 +1,15 @@
-package net.rightpair.banking.adapter.out.service;
+package net.rightpair.remittance.adapter.out.service.membership;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import net.rightpair.banking.application.port.out.GetMembershipPort;
-import net.rightpair.banking.application.port.out.MembershipStatus;
 import net.rightpair.common.CommonHttpClient;
 import net.rightpair.common.annotation.InternalServiceAdapter;
+import net.rightpair.remittance.application.port.out.membership.MembershipPort;
+import net.rightpair.remittance.application.port.out.membership.MembershipStatus;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.util.UriComponentsBuilder;
 
 @InternalServiceAdapter
-public class MembershipServiceAdapter implements GetMembershipPort {
+public class MembershipServiceAdapter implements MembershipPort {
 
     private final CommonHttpClient commonHttpClient;
     private final ObjectMapper objectMapper;
@@ -37,4 +37,6 @@ public class MembershipServiceAdapter implements GetMembershipPort {
             throw new RuntimeException(e);
         }
     }
+
+
 }

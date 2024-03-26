@@ -1,9 +1,16 @@
 rootProject.name = 'spring-pay-app'
 include 'common'
+
 include 'service:membership-service'
 include 'service:banking-service'
 include 'service:money-service'
 include 'service:remittance-service'
+findProject(':service:membership-service')?.name = 'membership-service'
+findProject(':service:banking-service')?.name = 'banking-service'
+findProject(':service:money-service')?.name = 'money-service'
+findProject(':service:remittance-service')?.name = 'remittance-service'
+
 include 'consumer:logging-consumer'
 include 'consumer:task-consumer'
-
+findProject(':consumer:logging-consumer')?.name = 'logging-consumer'
+findProject(':consumer:task-consumer')?.name = 'task-consumer'
