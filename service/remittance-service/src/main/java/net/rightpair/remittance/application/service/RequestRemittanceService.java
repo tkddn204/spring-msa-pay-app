@@ -15,6 +15,9 @@ import net.rightpair.remittance.application.port.out.money.MoneyPort;
 import net.rightpair.remittance.domain.RemittanceRequest;
 import org.springframework.transaction.annotation.Transactional;
 
+import static net.rightpair.remittance.domain.RemittanceRequest.RemittanceType.BANK;
+import static net.rightpair.remittance.domain.RemittanceRequest.RemittanceType.MEMBERSHIP;
+
 @UseCase
 @Transactional
 @RequiredArgsConstructor
@@ -54,23 +57,20 @@ public class RequestRemittanceService implements RequestRemittanceUseCase {
         }
 
         // 3. 송금 타입 (고객/은행)
-        if (command.getRemittanceType()==0) {
+        if (command.getRemittanceType().equals(MEMBERSHIP)) {
             // 3-1. 내부 고객일 경우
             // from 고객 머니 감액, to 고객 머니 증액 (money svc)
-            boolean remittanceResult1 ;
-            boolean remittanceResult2 ;
-            remittanceResult1 = moneyPort.requestMoneyDecrease(command.getFromMembershipId(), command.getAmount());
-            remittanceResult2 = moneyPort.requestMoneyIncrease(command.getToMembershipId(), command.getAmount());
-            if (!remittanceResult1 || !remittanceResult2) {
+            boolean isRequestMoneyDecrease = moneyPort.requestMoneyDecrease(command.getFromMembershipId(), command.getAmount());
+            boolean isRequestMoneyIncrease = moneyPort.requestMoneyIncrease(command.getToMembershipId(), command.getAmount());
+            if (!isRequestMoneyDecrease || !isRequestMoneyIncrease) {
                 return null;
             }
-
-        } else if (command.getRemittanceType()==1) {
+        } else if (command.getRemittanceType().equals(BANK)) {
             // 3-2. 외부 은행 계좌
             // 외부 은행 계좌가 적절한지 확인 (banking svc)
             // 법인계좌 -> 외부 은행 계좌 펌뱅킹 요청 (banking svc)
-            boolean remittanceResult = bankingPort.requestFirmBanking(command.getToBankName(), command.getToBankAccountNumber(), command.getAmount());
-            if (!remittanceResult) {
+            boolean isRequestFirmBanking = bankingPort.requestFirmBanking(command.getToBankName(), command.getToBankAccountNumber(), command.getAmount());
+            if (!isRequestFirmBanking) {
                 return null;
             }
         }

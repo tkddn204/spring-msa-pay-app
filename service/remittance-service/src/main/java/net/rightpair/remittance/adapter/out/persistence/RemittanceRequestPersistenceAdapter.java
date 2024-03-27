@@ -6,7 +6,6 @@ import net.rightpair.remittance.application.port.in.FindRemittanceCommand;
 import net.rightpair.remittance.application.port.in.RequestRemittanceCommand;
 import net.rightpair.remittance.application.port.out.FindRemittancePort;
 import net.rightpair.remittance.application.port.out.RequestRemittancePort;
-import net.rightpair.remittance.domain.RemittanceRequest;
 
 import java.util.List;
 
@@ -29,7 +28,7 @@ public class RemittanceRequestPersistenceAdapter implements FindRemittancePort, 
                 .toBankName(command.getToBankName())
                 .toBankAccountNumber(command.getToBankAccountNumber())
                 .amount(command.getAmount())
-                .remittanceType(RemittanceRequest.RemittanceType.values()[command.getRemittanceType()])
+                .remittanceType(command.getRemittanceType())
                 .build());
     }
 
