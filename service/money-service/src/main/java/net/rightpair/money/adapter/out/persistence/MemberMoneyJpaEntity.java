@@ -13,13 +13,15 @@ public class MemberMoneyJpaEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long memberMoneyId;
     private Long membershipId;
-    private int balance;
+    private Integer balance;
+    private String aggregateIdentifier;
 
     @Builder
-    public MemberMoneyJpaEntity(Long memberMoneyId, Long membershipId, int balance) {
+    public MemberMoneyJpaEntity(Long memberMoneyId, Long membershipId, Integer balance, String aggregateIdentifier) {
         this.memberMoneyId = memberMoneyId;
         this.membershipId = membershipId;
         this.balance = balance;
+        this.aggregateIdentifier = aggregateIdentifier;
     }
 
     public void updateBalance(int increaseMoneyAmount) {

@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import net.rightpair.banking.application.port.out.RequestFirmBankingPort;
 import net.rightpair.banking.domain.FirmBankingRequest;
 import net.rightpair.common.annotation.PersistenceAdapter;
+import net.rightpair.exception.FirmBankingRequestNotFoundException;
 
 import java.util.UUID;
 
@@ -14,13 +15,20 @@ public class FirmBankingRequestPersistenceAdapter implements RequestFirmBankingP
     private final SpringDataFirmBankingRequestRepository firmBankingRequestRepository;
 
     @Override
+    public FirmBankingRequestJpaEntity getFirmBankingRequest(FirmBankingRequest.FirmBankingAggregateIdentifier firmBankingAggregateIdentifier) {
+        return firmBankingRequestRepository.findByAggregateIdentifier(firmBankingAggregateIdentifier.firmBankingAggregateIdentifier())
+                .orElseThrow(FirmBankingRequestNotFoundException::new);
+    }
+
+    @Override
     public FirmBankingRequestJpaEntity createFirmBankingRequest(
             FirmBankingRequest.FromBankName fromBankName,
             FirmBankingRequest.FromBankAccountNumber fromBankAccountNumber,
             FirmBankingRequest.ToBankName toBankName,
             FirmBankingRequest.ToBankAccountNumber toBankAccountNumber,
             FirmBankingRequest.MoneyAmount moneyAmount,
-            FirmBankingRequest.FirmBankingStatus firmBankingStatus
+            FirmBankingRequest.FirmBankingStatus firmBankingStatus,
+            FirmBankingRequest.FirmBankingAggregateIdentifier firmBankingAggregateIdentifier
     ) {
         return firmBankingRequestRepository.save(FirmBankingRequestJpaEntity.builder()
                 .fromBankName(fromBankName.fromBankName())
@@ -30,6 +38,7 @@ public class FirmBankingRequestPersistenceAdapter implements RequestFirmBankingP
                 .moneyAmount(moneyAmount.moneyAmount())
                 .firmBankingStatus(firmBankingStatus.firmBankingStatus())
                 .uuid(UUID.randomUUID())
+                .aggregateIdentifier(firmBankingAggregateIdentifier.firmBankingAggregateIdentifier())
                 .build()
         );
     }

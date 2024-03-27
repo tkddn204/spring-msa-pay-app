@@ -2,7 +2,7 @@ package net.rightpair.banking.adapter.out.persistence;
 
 import jakarta.persistence.*;
 import lombok.*;
-import net.rightpair.banking.domain.FirmBankingRequest;
+import net.rightpair.banking.domain.type.FirmBankingStatusType;
 
 import java.util.UUID;
 
@@ -20,11 +20,12 @@ public class FirmBankingRequestJpaEntity {
     private String toBankName;
     private String toBankAccountNumber;
     private int moneyAmount;
-    private FirmBankingRequest.FirmBankingStatusType firmBankingStatus;
+    private FirmBankingStatusType firmBankingStatus;
     private String uuid;
+    private String aggregateIdentifier;
 
     @Builder
-    public FirmBankingRequestJpaEntity(Long requestFirmBankingId, String fromBankName, String fromBankAccountNumber, String toBankName, String toBankAccountNumber, int moneyAmount, FirmBankingRequest.FirmBankingStatusType firmBankingStatus, UUID uuid) {
+    public FirmBankingRequestJpaEntity(Long requestFirmBankingId, String fromBankName, String fromBankAccountNumber, String toBankName, String toBankAccountNumber, int moneyAmount, FirmBankingStatusType firmBankingStatus, UUID uuid, String aggregateIdentifier) {
         this.requestFirmBankingId = requestFirmBankingId;
         this.fromBankName = fromBankName;
         this.fromBankAccountNumber = fromBankAccountNumber;
@@ -33,13 +34,14 @@ public class FirmBankingRequestJpaEntity {
         this.moneyAmount = moneyAmount;
         this.firmBankingStatus = firmBankingStatus;
         this.uuid = uuid.toString();
+        this.aggregateIdentifier = aggregateIdentifier;
     }
 
     public void updateUUID(String uuid) {
         this.uuid = uuid;
     }
 
-    public void updateFirmBankingStatus(FirmBankingRequest.FirmBankingStatusType firmBankingStatus) {
+    public void updateFirmBankingStatus(FirmBankingStatusType firmBankingStatus) {
         this.firmBankingStatus = firmBankingStatus;
     }
 }

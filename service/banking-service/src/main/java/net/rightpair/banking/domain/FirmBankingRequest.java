@@ -3,6 +3,7 @@ package net.rightpair.banking.domain;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import net.rightpair.banking.domain.type.FirmBankingStatusType;
 
 import java.util.UUID;
 
@@ -25,9 +26,7 @@ public class FirmBankingRequest {
 
     private final UUID uuid;
 
-    public enum FirmBankingStatusType {
-        REQUESTED, SUCCESS, FAILED
-    }
+    private final String firmBankingAggregateIdentifier;
 
     public static FirmBankingRequest generate(
             FirmBankingRequestId firmBankingRequestId,
@@ -37,7 +36,8 @@ public class FirmBankingRequest {
             ToBankAccountNumber toBankAccountNumber,
             MoneyAmount moneyAmount,
             FirmBankingStatus firmBankingStatus,
-            FirmBankingRequestUUID firmBankingRequestUUID
+            FirmBankingRequestUUID firmBankingRequestUUID,
+            FirmBankingAggregateIdentifier firmBankingAggregateIdentifier
     ) {
         return new FirmBankingRequest(
                 firmBankingRequestId.firmBankingRequestId,
@@ -47,7 +47,8 @@ public class FirmBankingRequest {
                 toBankAccountNumber.toBankAccountNumber,
                 moneyAmount.moneyAmount,
                 firmBankingStatus.firmBankingStatus,
-                firmBankingRequestUUID.uuid
+                firmBankingRequestUUID.uuid,
+                firmBankingAggregateIdentifier.firmBankingAggregateIdentifier
         );
     }
 
@@ -59,4 +60,5 @@ public class FirmBankingRequest {
     public record MoneyAmount(Integer moneyAmount) { }
     public record FirmBankingStatus(FirmBankingStatusType firmBankingStatus) { }
     public record FirmBankingRequestUUID(UUID uuid) { }
+    public record FirmBankingAggregateIdentifier(String firmBankingAggregateIdentifier) { }
 }

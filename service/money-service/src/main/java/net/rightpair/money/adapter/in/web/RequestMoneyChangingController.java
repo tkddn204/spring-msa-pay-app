@@ -25,6 +25,8 @@ public class RequestMoneyChangingController implements RequestMoneyChangingEndpo
     private final IncreaseMoneyRequestUseCase increaseMoneyRequestUseCase;
     private final DecreaseMoneyRequestUseCase decreaseMoneyRequestUsecase;
 
+    private final CreateMemberMoneyUsecase createMemberMoneyUsecase;
+
     @Override
     @PostMapping("/increase")
     public MoneyChangingResultDetail increaseMoneyChangingRequest(@RequestBody IncreaseMoneyChangingRequest request) {
@@ -55,5 +57,20 @@ public class RequestMoneyChangingController implements RequestMoneyChangingEndpo
                 REQUESTED.ordinal(),
                 request.amount()
         );
+    }
+
+    @PostMapping(path = "/eda/increase")
+    void increaseMoneyChangingRequestByEvent(@RequestBody IncreaseMoneyChangingRequest request) {
+        IncreaseMoneyRequestCommand command = IncreaseMoneyRequestCommand.builder()
+                .targetMembershipId(request.targetMemberShipId())
+                .amount(request.amount())
+                .build();
+
+        increaseMoneyRequestUseCase.increaseMoneyRequestByEvent(command);
+    }
+
+    @PostMapping(path = "/eda/create/member/money")
+    void createMemberMoney(@RequestBody CreateMemberMoneyRequest request) {
+        createMemberMoneyUseCase.createMemberMoney(new CreateMemberMoneyCommand(request.targetMembershipId()));
     }
 }

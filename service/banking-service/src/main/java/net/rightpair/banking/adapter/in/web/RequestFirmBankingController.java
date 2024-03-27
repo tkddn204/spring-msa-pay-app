@@ -1,6 +1,7 @@
 package net.rightpair.banking.adapter.in.web;
 
 import lombok.RequiredArgsConstructor;
+import net.rightpair.banking.adapter.axon.command.UpdateRequestFirmBankingCommand;
 import net.rightpair.banking.adapter.in.web.endpoint.RequestFirmBankingEndPoint;
 import net.rightpair.banking.application.port.in.usecase.RequestFirmBankingUsecase;
 import net.rightpair.banking.application.port.in.command.RequestFirmBankingCommand;
@@ -33,5 +34,27 @@ public class RequestFirmBankingController implements RequestFirmBankingEndPoint 
                 .moneyAmount(request.moneyAmount())
                 .build();
         return ResponseEntity.ok(requestFirmBankingUsecase.requestFirmBanking(command));
+    }
+
+    @PostMapping(path = "/firm/eda/request")
+    void requestFirmBankingByEvent(@RequestBody RequestFirmBankingRequest request) {
+        RequestFirmBankingCommand command = RequestFirmBankingCommand.builder()
+                .toBankName(request.toBankName())
+                .toBankAccountNumber(request.toBankAccountNumber())
+                .fromBankName(request.fromBankName())
+                .fromBankAccountNumber(request.fromBankAccountNumber())
+                .moneyAmount(request.moneyAmount())
+                .build();
+
+        requestFirmBankingUsecase.requestFirmBankingByEvent(command);
+    }
+
+    @PostMapping(path = "/firm/eda/update")
+    void updateFirmBankingByEvent(@RequestBody UpdateFirmBankingRequest request) {
+        UpdateRequestFirmBankingCommand command = UpdateRequestFirmBankingCommand.builder()
+                .aggregateIdentifier(request.firmBankingAggregateIdentifier())
+                .firmBankingStatus(request.status())
+                .build();
+        requestFirmBankingUsecase.updateFirmBankingByEvent(command);
     }
 }
